@@ -66,6 +66,9 @@ for call in calls:
         # If it's calling a mobile
         if receiver[0] in ("7", "8", "9"):
             called_prefixes.add(receiver[0:4])
+        # If it's calling a telemarketer number
+        if receiver[0:3] == "140":
+            called_prefixes.add(receiver[0:3])
         # If it's calling a fixed lines
         elif receiver[0] == '(':
             called_prefixes.add(get_area_code(receiver))
