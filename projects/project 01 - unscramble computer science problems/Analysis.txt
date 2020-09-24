@@ -1,0 +1,44 @@
+Task 0 
+
+Answer: O(1) => Constant Time
+
+Justification: Where're just accessing elements in lists (by index). We're not looping through the lists. So, time complexity is O(1).
+
+_________________________________________________________
+
+Task 1
+
+Answer: O(n) => Linear Time
+
+Justification: We're iterating over a list of calls (and messages) to transform it to a set, and to use the function zip().
+So, time complexity is O(n).
+
+_________________________________________________________
+
+Task 2
+
+Answer: O(n) => Linear Time
+
+Justification: We're iterating over a list of calls to save its duration on a dicitonary. After we're also iterating over the dictionary
+to get the maximum value. So, time complexity is O(n).
+
+_________________________________________________________
+
+Task 3
+
+Answer: O(n * log n)
+
+Justification: We're iterating over a list of calls to analyse the caller and the receiver numbers. Here we have O(n). We're also iterating inside the numbers 
+(string) of the callers and of the receivers. But this time complexity doesn't change when the list of calls get bigger. 
+Furthermore, to sort a list in python we have a time complexity of O(n * log n), 
+and considering the worst case scenario, where all numbers from the list of calls are in the list to be sorted, 
+we will have O(n * log n) for this time complexity. As O(n * log n) is more expansive than O(n), the answer is O(n * log n).
+
+_________________________________________________________
+
+Task 4
+
+Answer: O(n**2) => Quadratic Time
+
+Justification: We're iterating over a list of calls to get all the callers (time complexity at worst case: O(n)). For each caller, we're going to search
+if it's in the list of texts or in the list of receivers (time complexity at worst case: O(n**2)). So the time complexity for this algorithm is O(n**2).
