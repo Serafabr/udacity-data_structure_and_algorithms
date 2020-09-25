@@ -38,7 +38,8 @@ _________________________________________________________
 
 Task 4
 
-Answer: O(n**2) => Quadratic Time
+Answer: O(n log n)
 
 Justification: We're iterating over a list of calls to get all the callers (time complexity at worst case: O(n)). For each caller, we're going to search
-if it's in the list of texts or in the list of receivers (time complexity at worst case: O(n**2)). So the time complexity for this algorithm is O(n**2).
+if it's in the list of texts or in the list of receivers. However, the operation x in/not in list has a complexity of O(1) (https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt).
+At the end, we sorted the list, and this operation has a time complexity of O (n log n). As O(n * log n) is more expansive than O(n), the answer is O(n * log n).
