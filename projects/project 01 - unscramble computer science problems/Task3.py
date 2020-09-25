@@ -70,9 +70,9 @@ for call in calls:
         if receiver[0:3] == "140":
             called_prefixes.add(receiver[0:3])
         # If it's calling a fixed lines
-        elif receiver[0] == '(':
+        elif receiver[0:2] == '(0':
             called_prefixes.add(get_area_code(receiver))
-            if "(080)" in caller:
+            if "(080)" in receiver:
               calls_to_bangalore += 1
 
 # Part A answer
@@ -85,4 +85,4 @@ for code in called_prefixes:
 # Part B answer
 # The percentage should have 2 decimal digits
 message = "{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore."
-print(message.format(round(calls_to_bangalore / calls_from_bangalore, 2)))
+print(message.format(round(calls_to_bangalore / calls_from_bangalore * 100, 2)))

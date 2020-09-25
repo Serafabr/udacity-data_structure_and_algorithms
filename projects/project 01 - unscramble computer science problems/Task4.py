@@ -38,6 +38,6 @@ for caller in set_callers:
 
 # Answer to Task4.py
 print("These numbers could be telemarketers:")
-possibles_telemarketers = sorted(list(possibles_telemarketers))
+possibles_telemarketers = sorted(possibles_telemarketers)
 for phone in possibles_telemarketers:
   print(phone)
