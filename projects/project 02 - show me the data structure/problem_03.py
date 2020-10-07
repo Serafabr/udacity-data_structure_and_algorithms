@@ -8,10 +8,13 @@ class Node:
         self.frequency = frequency
         self.left = None
         self.right = None
+        
+    def __str__(self):
+        return "{} ({})".format(self.value, self.frequency)
 
 
-# Min-heap to work as a priority queue
-# PRIORITY QUEUE
+# Min-heap to work as a priority queue for Node (with value, and frequency)
+# PRIORITY QUEUE by frequency
 class Min_Heap:
     
     def __init__(self):
@@ -21,15 +24,18 @@ class Min_Heap:
     
     def insert(self, node):
         self.arr.append(node)
-        self._bubble_up()
         self.num_items += 1
+        self._bubble_up()
     
     def pop(self):
+        if self.num_items == 0:
+            return None
+        
         node = self.arr[1]
-        self. arr[1] = self.arr[self.num_items]
+        self.arr[1] = self.arr[self.num_items]
         self.arr[self.num_items] = None
-        self._bubble_down()
         self.num_items -= 1
+        self._bubble_down()
         
         return node
     
@@ -40,13 +46,13 @@ class Min_Heap:
         
     def _get_left_child(self, index):
         result = index * 2
-        if result > self.num_elements:
+        if result > self.num_items:
             return None
         return result
         
     def _get_right_child(self, index):
         result = index * 2 + 1
-        if result > self.num_elements:
+        if result > self.num_items:
             return None
         return result
         
@@ -59,9 +65,9 @@ class Min_Heap:
     # Bubble down the first element (root)
     def _bubble_down(self):
         index = 1
-        while not _is_leaf(index):
-            r_child = _get_right_child(index)
-            l_child = _get_left_child(index)
+        while not self._is_leaf(index):
+            r_child = self._get_right_child(index)
+            l_child = self._get_left_child(index)
             
             value = self.arr[index].frequency
             
@@ -72,7 +78,7 @@ class Min_Heap:
             
             if l_child:
                 l_value = self.arr[l_child].frequency
-             else:
+            else:
                 l_value = None
             
             min_value = min(x for x in (value, r_value, l_value) if x is not None)
@@ -92,7 +98,7 @@ class Min_Heap:
     def _bubble_up(self):
         index = self.num_items
         while not index == 1:
-            parent = _get_parent(index)
+            parent = self._get_parent(index)
             
             value = self.arr[index].frequency
             p_value = self.arr[parent].frequency
@@ -105,8 +111,24 @@ class Min_Heap:
             else:
                 self._swap_nodes(index, parent)
                 index = parent
-            
     
+    def __str__(self):
+        output = "Priority Queue: \n"
+        for value in self.arr:
+            if value is not None:
+                output += "{}\n".format(value)
+        return output
+            
+
+def count_letters(word):
+    result = dict({})
+    for letter in word:
+        result[letter] = result.get(letter, 0) + 1
+    return result
+    
+###### TODO
+def generate_frequency_queue(dict_letters):
+    pass
 
 def huffman_encoding(data):
     pass
@@ -115,19 +137,37 @@ def huffman_decoding(data,tree):
     pass
 
 if __name__ == "__main__":
-    codes = {}
+    
+    # Testing Min_Heap
+    priority_queue = Min_Heap()
+    priority_queue.insert(Node("A", 4))
+    priority_queue.insert(Node("B", 5))
+    priority_queue.insert(Node("B", 2))
+    priority_queue.insert(Node("B", 7))
+    priority_queue.insert(Node("B", 1))
+    print(priority_queue)
+    print(priority_queue.pop())
+    print(priority_queue)
+    print(priority_queue.pop())
+    print(priority_queue.pop())
+    print(priority_queue.pop())
+    print(priority_queue.pop())
+    print(priority_queue.pop())
+    print(priority_queue)
+    
+    # codes = {}
 
-    a_great_sentence = "The bird is the word"
+    # a_great_sentence = "The bird is the word"
 
-    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-    print ("The content of the data is: {}\n".format(a_great_sentence))
+    # print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    # print ("The content of the data is: {}\n".format(a_great_sentence))
 
-    encoded_data, tree = huffman_encoding(a_great_sentence)
+    # encoded_data, tree = huffman_encoding(a_great_sentence)
 
-    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    # print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    # print ("The content of the encoded data is: {}\n".format(encoded_data))
 
-    decoded_data = huffman_decoding(encoded_data, tree)
+    # decoded_data = huffman_decoding(encoded_data, tree)
 
-    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    print ("The content of the encoded data is: {}\n".format(decoded_data))
+    # print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    # print ("The content of the encoded data is: {}\n".format(decoded_data))
