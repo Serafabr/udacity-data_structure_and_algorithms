@@ -56,8 +56,29 @@ class Huffman_Tree():
         for char in data:
             result += str(self.code[char]['code']) 
         return result
+    
+    def decode_data(self, data):
+        result = ""
+        node = self.root
+        data_str = str(data)
+
+        for binary in data_str:
+            if binary == "0" and node.left:
+                node = node.left
+            elif binary == "1" and node.right:
+                node = node.right
+            
+            if node.has_no_children():
+                result += str(node.value)
+                node = self.root
+        
+        return result
+        
         
     def _produce_code(self):
+        if self.root.has_no_children():
+            return {self.root.value: {'freq': self.root.frequency, 'code': "1"}}
+        
         leaves = {}
         self._collect_leaf_nodes(self.root, leaves)
         return leaves
@@ -209,33 +230,24 @@ def huffman_encoding(data):
     
     return encoded_data, huffman_tree
     
-    
 
-def huffman_decoding(data,tree):
-    pass
+
+def huffman_decoding(data, tree):
+    return tree.decode_data(data)
 
 if __name__ == "__main__":
     
-    # Testing
-    # phrase = 'Hello everyone. I\'m here right now.'
-    # dict_letters = count_letters(phrase)
-    # queue = generate_frequency_queue(dict_letters)
-    
-    # encoded_data, huffman_tree = huffman_encoding(phrase)
-
-    a_great_sentence = "The bird is the word"
+    a_great_sentence = "Nervously I stood there under the porch light. As you smiled at me and moved in closer. You took me in your arms, and my heart began to thud so loudly. I was sure you could hear it but were pretending you didnt. You moistened your lips, looked deeply into my eyes, And then gently pressed your lips to mine. A moment's pause, and you touched my lips with yours again, A whisper of a kiss that promised more to come. We kissed again, and during that kiss I felt like I had finally come home. Looking back, I know I was right as we kiss goodnight and I turn out the light."
 
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print ("The content of the data is: {}\n".format(a_great_sentence))
 
     encoded_data, tree = huffman_encoding(a_great_sentence)
 
-    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
-    
-    print("Tree: ", tree.root)
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
 
-    # decoded_data = huffman_decoding(encoded_data, tree)
+    decoded_data = huffman_decoding(encoded_data, tree)
 
-    # print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    # print ("The content of the encoded data is: {}\n".format(decoded_data))
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
