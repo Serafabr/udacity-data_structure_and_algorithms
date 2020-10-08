@@ -211,7 +211,6 @@ def count_letters(word):
         result[letter] = result.get(letter, 0) + 1
     return result
     
-###### TODO
 def generate_frequency_queue(dict_letters):
     result = Min_Heap()
     for letter, frequency in dict_letters.items():
