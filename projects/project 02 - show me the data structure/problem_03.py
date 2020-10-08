@@ -8,10 +8,71 @@ class Node:
         self.frequency = frequency
         self.left = None
         self.right = None
+    
+    def has_no_children(self):
+        return (self.left is None) and (self.right is None)
         
     def __str__(self):
         return "{} ({})".format(self.value, self.frequency)
 
+class Huffman_Tree():
+    
+    def __init__(self):
+        self.root = None
+        self.code = dict({})
+        
+    def initialize_tree(self, priority_queue):
+         #Building Tree
+        node_1 = priority_queue.pop()
+        node_2 = priority_queue.pop()
+        
+        while node_1 and node_2:
+            parent_value = str(node_1.value) + str(node_2.value)
+            parent_frequency = node_1.frequency + node_2.frequency 
+            parent_node = Node(parent_value, parent_frequency)
+            
+            if node_1.frequency < node_2.frequency:
+                parent_node.left = node_1
+                parent_node.right = node_2
+            else:
+                parent_node.left = node_2
+                parent_node.right = node_1
+            
+            priority_queue.insert(parent_node)
+            
+            node_1 = priority_queue.pop()
+            node_2 = priority_queue.pop()
+        
+        # Now there's just one element on the queue
+        if node_1:
+            self.root = node_1
+        elif node_2:
+            self.root = node_2
+
+        self.code = self._produce_code()
+    
+    def encode_data(self, data):
+        result = ""
+        for char in data:
+            result += str(self.code[char]['code']) 
+        return result
+        
+    def _produce_code(self):
+        leaves = {}
+        self._collect_leaf_nodes(self.root, leaves)
+        return leaves
+
+    def _collect_leaf_nodes(self, node, leaves, code = ""):
+        if node is not None:
+            if node.has_no_children():
+                "Im leaf"
+                leaves[node.value] = {'freq': node.frequency, 'code': code}
+            else:
+                if node.left:
+                    self._collect_leaf_nodes(node.left, leaves, str(code) + "0")
+                if node.right:
+                    self._collect_leaf_nodes(node.right, leaves, str(code) + "1")
+                
 
 # Min-heap to work as a priority queue for Node (with value, and frequency)
 # PRIORITY QUEUE by frequency
@@ -23,8 +84,11 @@ class Min_Heap:
         self.num_items = 0
     
     def insert(self, node):
-        self.arr.append(node)
         self.num_items += 1
+        if self.num_items >= len(self.arr):
+            self.arr.append(node)
+        else:
+            self.arr[self.num_items] = node
         self._bubble_up()
     
     def pop(self):
@@ -128,44 +192,46 @@ def count_letters(word):
     
 ###### TODO
 def generate_frequency_queue(dict_letters):
-    pass
+    result = Min_Heap()
+    for letter, frequency in dict_letters.items():
+        result.insert(Node(letter, frequency))
+    
+    return result
 
 def huffman_encoding(data):
-    pass
+    dict_letters = count_letters(data)
+    priority_queue = generate_frequency_queue(dict_letters)
+    
+    huffman_tree = Huffman_Tree()
+    huffman_tree.initialize_tree(priority_queue)
+    
+    encoded_data = huffman_tree.encode_data(data)
+    
+    return encoded_data, huffman_tree
+    
+    
 
 def huffman_decoding(data,tree):
     pass
 
 if __name__ == "__main__":
     
-    # Testing Min_Heap
-    priority_queue = Min_Heap()
-    priority_queue.insert(Node("A", 4))
-    priority_queue.insert(Node("B", 5))
-    priority_queue.insert(Node("B", 2))
-    priority_queue.insert(Node("B", 7))
-    priority_queue.insert(Node("B", 1))
-    print(priority_queue)
-    print(priority_queue.pop())
-    print(priority_queue)
-    print(priority_queue.pop())
-    print(priority_queue.pop())
-    print(priority_queue.pop())
-    print(priority_queue.pop())
-    print(priority_queue.pop())
-    print(priority_queue)
+    # Testing
+    # phrase = 'Hello everyone. I\'m here right now.'
+    # dict_letters = count_letters(phrase)
+    # queue = generate_frequency_queue(dict_letters)
     
-    # codes = {}
+    # encoded_data, huffman_tree = huffman_encoding(phrase)
 
-    # a_great_sentence = "The bird is the word"
+    a_great_sentence = "The bird is the word"
 
-    # print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-    # print ("The content of the data is: {}\n".format(a_great_sentence))
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print ("The content of the data is: {}\n".format(a_great_sentence))
 
-    # encoded_data, tree = huffman_encoding(a_great_sentence)
+    encoded_data, tree = huffman_encoding(a_great_sentence)
 
-    # print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    # print ("The content of the encoded data is: {}\n".format(encoded_data))
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
 
     # decoded_data = huffman_decoding(encoded_data, tree)
 
