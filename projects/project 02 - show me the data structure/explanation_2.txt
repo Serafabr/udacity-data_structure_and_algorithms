@@ -1,0 +1,23 @@
+Code Design:
+
+    Data Structures used to implement the File Finder: 
+        - Stack
+        
+    Explanation:
+        The stack will be used to keep control of the files and directories that still need to be analysed. First we need to 
+        list all files/diretories from the current folder and put them on stack. Pop one file/directory from stack to check. 
+        If it's a folder, list all of its subdirectories and files and push them to the stack. 
+        If it's a file, check to see if it ends with the suffix. Pop the next item and start the process again.
+
+
+Efficiency:
+
+    Operation: find_files
+    
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+        Explanation - The operation search for files with the suffix provided by the user. It will need to loop through all files
+        and folders in order to find the correct files. So, we have a time complexity of O(n). In order to keep control of what was
+        already analysed, we will save files and folder that was not checked yet on the stack. Here, we're talking about a space 
+        complexity of O(n).
+    

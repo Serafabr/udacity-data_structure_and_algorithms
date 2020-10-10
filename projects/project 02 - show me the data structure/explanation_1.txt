@@ -1,0 +1,39 @@
+Code Design:
+
+    Data Structures used to implement LRU Cache: 
+        - Hash Table (dicitonary in Python)
+        - Double Linked List
+        
+    Explanation:
+        We need to construct a data structure where the time complexity to insert (at beginning), delete (at end) and get elements is O(1).
+        For getting the element without loop through the list, we're using the Hash Table. With the key and the Hash Table,
+        we can get any element with a time complexity of O(1). To insert a new element to the beginning of the list and to remove the
+        last element of the list, we'll need a Double Linked List. So these operations will be O(1) in time as well.  
+
+
+Efficiency:
+
+    Operation: set
+    
+        Time Complexity - O(1)
+        Space Complexity - O(n)
+        Explanation - The operation adds new elements at the beginning of the Double Linked List.
+        Here, there's no complication and no loops. Just need to create the node and insert at the beginning of the list.
+        Sometimes it will be necessary to remove the last element of the list, which has a cost of O(1) as well. 
+        Concerning to space complexity, we have two data structure to store the elements on a LRU Cache: Hash Table and Double LInked List, 
+        so we have a space complexity of O(n).
+    
+    Operation: get
+
+        Time Complexity - O(1)
+        Space Complexity - O(1)
+        Explanation - The operation uses the Hash Table to find the element (value) with the key provided. Using a Hash Table 
+        (dictionary) to find values has a time complexity of O(1). There's no need to create any new data structure when getting values.
+        
+    Operation: remove items from the end of the Cache
+    
+        Time Complexity - O(1)
+        Space Complexity - O(1)
+        Explanation - The operation removes the least recent element from the LRU Cache. Since we already have a pointer
+        to the least recent element, the cost in time and space to eliminate it is O(1). We just need to get its previous element and
+        assign it to the least recent value.
