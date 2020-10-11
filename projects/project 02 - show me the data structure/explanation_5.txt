@@ -1,0 +1,41 @@
+Code Design:
+
+    Data Structures used to implement is_user_in_group: 
+        - Single Linked List (reversed)
+        
+    Explanation:
+        One feature of a blockchain is that each element points the previous block, and it keeps track of the previous hash
+        as well. Since each block points its previous block, I decided to use a Single Linked List reversed (start at the tail).
+        It steps backwards, so, it goes from the tail to the previous element, and not to the next.
+
+
+Efficiency:
+
+    Operation: insert_block
+    
+        Time Complexity - O(1)
+        Space Complexity - O(n)
+        
+        Explanation - Just creat a new block and put it on the tail. Doesn't need to loop through the list. Then, time complexity is O(1)
+        Each element will be put on one block. So, space complexity is O(n)
+        
+    Operation: get_last_block
+    
+        Time Complexity - O(1)
+        
+        Explanation - Get the tail from the blockchain. Doesn't need to loop through the list. Then, time complexity is O(1)
+        
+    Operation: get_root
+    
+        Time Complexity - O(n)
+        PS: n is the size of the blockchain
+        
+        Explanation - Loop through all elements from the block chain. Time complexity is O(n)
+    
+    Operation: check_block
+    
+        Time Complexity - O(n)
+        PS: n is the size of the blockchain
+        
+        Explanation - This algorithm needs to check every element on the blockchain. It needs to loop through all elements on
+        the blockchain. So, time complexity is O(n).

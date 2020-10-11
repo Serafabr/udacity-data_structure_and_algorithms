@@ -1,0 +1,45 @@
+Code Design:
+
+    Data Structures used to implement LRU Cache: 
+        - Min heap (as a priority queue)
+        - Binary Tree (Huffman Tree)
+        
+    Explanation:
+        To apply the huffman encoding algorithm, we need a priority queue to get the lowest element with a time complexity of O(1) and
+        a binary tree to implement the Huffman Tree. To implement the priority queue I used the min heap data structure, so I have
+        a time complexity of O(1) to get the lowest element and O(log n) to insert a element back on the list on the correct order. 
+        Other structures, as a queue has a higher time complexity for this operation.
+        To implement the Huffman Tree I used a simple Binary Tree.
+
+
+Efficiency:
+
+    Operation: initialize_tree (from priority queue)
+    
+        Time Complexity - O(n log n)
+        Space Complexity - O(n)
+        PS: n is the size of the priority queue.
+        Explanation - We need to loop through all items on the priority queue, which has a time complexity of O(n). For each loop,
+        we need to re-insert the some item on the priority queue, which has a tima complexity of O(log n). 
+        To calculate the code (encoding for each character), we need to go trough all leaves of the tree, a time complexity
+        of O(n log n) as well. So, the final time complexity is O(n log n).
+        The Huffham tree has n elements as leaves, so a space complexity of O(n). Plus an extra size as the height of the
+        tree O(log n). So, O(n) + O(log n) is O(n), the final space complexity.
+    
+    Operation: encode_data
+
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+        PS: n is the size of the data
+        Explanation - The operation uses a dictionary to get the encoding value for each character, so O(1). We need to do this operation
+        for every character on data. So, we will end with a time complexity of O(n). To store the result we need a space for each encoded letter,
+        a space complexity of O(n).
+        
+    Operation: decode_data
+    
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+        PS: n is the size of the encoded data
+        Explanation - Each value on the encoded data is the direction we need to go on the tree. When getting to a leaf, just get
+        its value. So, we just need to loop through all values from decoded data, a time complexity of O(n). 
+        To store the result we need a space for each encoded letter, a space complexity of O(n).

@@ -16,7 +16,7 @@ class Node:
     def __str__(self):
         return "{} ({})".format(self.value, self.frequency)
 
-# Huffman_Tree structure - Full Binary Tree.
+# Huffman_Tree structure - Binary Tree.
 # It's a full binary tree in which each leaf of the tree correspond to some character to de encoded/decoded.
 class Huffman_Tree():
     
@@ -272,6 +272,11 @@ def generate_frequency_queue(dict_letters):
 
 # Huffman encoding formula
 def huffman_encoding(data):
+    
+    if len(data) < 1:
+        print("There's no data to encode.")
+        return None, None
+    
     # Get frequency of each letter and generate the priority queue
     dict_letters = count_letters(data)
     priority_queue = generate_frequency_queue(dict_letters)
@@ -328,6 +333,16 @@ def test_case_02():
     print('---------------------------------------')
     print("TEST CASE 02 - EDGE CASE")
     print("Empty string")
+    
+    a_great_sentence = ""
+
+    encoded_data, tree = huffman_encoding(a_great_sentence)
+    # Answer
+    # There's no data to encode
+    
+    print(encoded_data, tree)
+    # Answer
+    # None None
     
     print('---------------------------------------')
 

@@ -6,8 +6,8 @@ Code Design:
         
     Explanation:
         We need to construct a data structure where the time complexity to insert (at beginning), delete (at end) and get elements is O(1).
-        For getting the element without loop through the list, we're using the Hash Table. With the key and the Hash Table,
-        we can get any element with a time complexity of O(1). To insert a new element to the beginning of the list and to remove the
+        For getting the elements without loop through the list, we're using the Hash Table. With the key and the Hash Table,
+        we can get any element with a time complexity of O(1). To insert a new element at the beginning of the list and to remove the
         last element of the list, we'll need a Double Linked List. So these operations will be O(1) in time as well.  
 
 

@@ -165,7 +165,7 @@ def test_case_01():
     print('---------------------------------------')
     print("TEST CASE 01 - NORMAL CASE")
     
-    
+    print("Create LRU Cache with a capacity of 5")
     our_cache = LRU_Cache(5)
     our_cache.set(1, 11)
     our_cache.set(2, 12)
@@ -268,7 +268,7 @@ def test_case_03():
     # CASE 03 - Edge case - Cache with a very large capacity
     print('---------------------------------------')
     print("TEST CASE 03 - EDGE CASE")
-    print("Cache with a very large capacity")
+    print("Cache with a very large capacity - 1000000")
     
     size = 1000000
     our_cache = LRU_Cache(size)

@@ -1,0 +1,28 @@
+Code Design:
+
+    Data Structures used to implement is_user_in_group: 
+        - Hash Table (dictionary on python)
+        
+    Explanation:
+        I decided to use a Hash Table (dictionary on python) to keep track of what elements are on the first list, and to keep its 
+        frequency (quantity) as well. With that information, we could loop through the second list and make operations like union
+        and intersection without have to loop through the first list everytime.
+
+
+Efficiency:
+
+    Operation: union
+    
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+        
+        Explanation - Loop through both lists (consider that n is the size of the lists) and use a dictionary to keep 
+        all elements from the first list. So, time and space complexity is O(n)
+        
+    Operation: intersection
+    
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+        
+        Explanation - Loop through both lists (consider that n is the size of the lists) and use a dictionary to keep 
+        all elements from the first list. So, time and space complexity is O(n)

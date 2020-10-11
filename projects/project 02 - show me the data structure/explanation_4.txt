@@ -1,0 +1,23 @@
+Code Design:
+
+    Data Structures used to implement is_user_in_group: 
+        - Stack
+        
+    Explanation:
+        The stack will be used to keep control of all the groups that still need to be checked. First we need to 
+        get all users from the current group and check if the wanted user is there. After that,
+        get all subgroups from the current group and put them on the stack. Pop the next item and start the process again.
+
+
+Efficiency:
+
+    Operation: is_user_in_group
+    
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+        PS: n is the quantity of groups and users we have.
+        
+        Explanation - The operation search for any user inside the provided group. It will need to loop through all groups and users
+        inside each group. So, we have a time complexity of O(n). In order to keep control of what was
+        already analysed, we will keep track of the groups that was not checked yet on the stack. Here, we're talking about a space 
+        complexity of O(n).
