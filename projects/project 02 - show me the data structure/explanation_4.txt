@@ -13,11 +13,11 @@ Efficiency:
 
     Operation: is_user_in_group
     
-        Time Complexity - O(n)
+        Time Complexity - O(n + m)
         Space Complexity - O(n)
-        PS: n is the quantity of groups and users we have.
+        PS: n is the quantity of groups and m of users.
         
         Explanation - The operation search for any user inside the provided group. It will need to loop through all groups and users
-        inside each group. So, we have a time complexity of O(n). In order to keep control of what was
+        inside each group. So, we have a time complexity of O(n + m). In order to keep control of what was
         already analysed, we will keep track of the groups that was not checked yet on the stack. Here, we're talking about a space 
         complexity of O(n).

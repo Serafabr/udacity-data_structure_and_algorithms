@@ -10,6 +10,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def __str__(self):
         cur_head = self.head
@@ -24,13 +25,12 @@ class LinkedList:
 
         if self.head is None:
             self.head = Node(value)
+            self.tail = self.head
             return
 
-        node = self.head
-        while node.next:
-            node = node.next
-
-        node.next = Node(value)
+        new_node = Node(value)
+        self.tail.next = new_node
+        self.tail = new_node
 
     def size(self):
         size = 0
@@ -146,7 +146,7 @@ def test_case_02():
 
     print (union(linked_list_3,linked_list_4))
     # Answer:
-    # 3 -> 2 -> 4 -> 35 -> 6 -> 65 -> 6 -> 4 -> 3 -> 23 -> 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 1 ->
+    # 3 -> 2 -> 4 -> 35 -> 6 -> 65 -> 6 -> 4 -> 3 -> 23 -> 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 1 -> 
     
     print (intersection(linked_list_3,linked_list_4))
     # Answer:
