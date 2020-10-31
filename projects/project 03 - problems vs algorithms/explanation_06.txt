@@ -1,0 +1,20 @@
+Code Design:
+
+    Algorithm used: 
+        - Traverse the list once
+        
+    Explanation: 
+        - Check every element on the list and save it on a new variable if it's greater than the greatest element until now,
+        or smaller than the smallest element until now.
+
+
+Efficiency:
+
+    Space Efficiency: O(1)
+        - Explanation: The algorithm doesn't need to create a copy of this list.
+
+    Operation: get_min_max(ints)
+    
+        Time Complexity - O(n)
+        Explanation - It needs to check each item of the list just once.
+    

@@ -37,6 +37,7 @@ def test_function(test_case):
 # TEST CASES
 def test_01():
     # Normal cases
+    print("TEST 01 - Normal Cases")
     
     test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
     # Answer: [0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2]
@@ -45,10 +46,13 @@ def test_01():
     test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
     # Answer: [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2]
     
+    print("-------------------------")
+    
 
 def test_02():
     # Edge cases
     # Empty list and list with one element
+    print("TEST 02 - Edge Cases  - Empty list and list with one element")
     
     test_function([])
     # Answer: []
@@ -59,9 +63,12 @@ def test_02():
     test_function([1])
     # Answer: [1]
     
+    print("-------------------------")
+    
 def test_03():
     # Edge cases
     # Large list
+    print("TEST 03 - Edge Cases - Large lists")
     
     large_list = []
     for i in range(2, -1, -1):
@@ -69,6 +76,8 @@ def test_03():
             large_list.append(i)
     test_function(large_list)
     # Answer: [0, ...., 1, ...., 2, ....] - 3000 elements
+    
+    print("-------------------------")
 
 
 if __name__ == '__main__':

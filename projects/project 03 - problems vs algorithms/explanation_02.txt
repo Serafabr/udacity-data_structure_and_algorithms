@@ -1,0 +1,20 @@
+Code Design:
+
+    Algorithm used: 
+        - Binary Search (divide and conquer)
+        
+    Explanation: 
+        - Every iteration the algorithm check if the number searched is greater or smaller than the number in the middle. It also
+        checks if the number could be on the other part due to the rotation.
+
+
+Efficiency:
+
+    Space Efficiency: O(1)
+        
+        Explanation: The size of the list doesn't alter the space used by the algorithm.
+
+    Operation: rotated_array_search(input_list, number)
+    
+        Time Complexity - O(log n)
+        Explanation - On each iteration we divide the problem in the middle. So, we have a time complexity of O(log n).

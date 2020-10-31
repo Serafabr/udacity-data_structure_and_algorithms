@@ -1,0 +1,19 @@
+Code Design:
+
+    Algorithm used: 
+        - Traverse the list
+        
+    Explanation: 
+        - The algorithm will check every number. If it's 0, send it to the beggining. If it's 2, send it to the end of the list.
+
+
+Efficiency:
+
+    Space Efficiency: O(n)
+        
+        - Explanation: It doesn't execute in place on the list. It creates a new list, in order to not mutate the initial input.
+
+    Operation: sort_012(input_list)
+    
+        Time Complexity - O(n)
+        Explanation - The algorithm will traverse the list (will check every number just once). So, time complexity is O(n)

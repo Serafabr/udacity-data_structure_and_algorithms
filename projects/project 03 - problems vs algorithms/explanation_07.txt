@@ -1,0 +1,29 @@
+Code Design:
+
+    Data Structures used: 
+        - Trie
+        - Hash Table
+        
+    Explanation: 
+        - A Trie was used to facilitate finding all relative paths from some url. Each node of the tree represents a relative path of the
+        url. And if a path is child of other path, it means that it is the continuation on the url.
+        Hash table was used to facilitate finding all children of some node (next relative path).
+
+
+Efficiency:
+
+    Space Efficiency: O(n) - n is the number of relative paths.
+        - Explanation: Each relative path will be saved on some node on the trie. For instance, in '/home/about/me' we will need
+        three nodes (home, about and me).
+
+    Operation: Router.add_handler()
+    
+        Time Complexity - O(m), where m is the number of relative paths (it can be roughly O(1))
+        Explanation - It needs to check each relative path on the url. Since the number of relative paths doesn't increase a lot,
+        we can consider that time complexity is roughly O(1)
+    
+    Operation: Router.lookup()
+
+        Time Complexity - O(m), where m is the number of the relative paths (it can be roughly O(1))
+        Explanation - It needs to check each relative path on the url. Since the number of relative paths doesn't increase a lot,
+        we can consider that time complexity is roughly O(1)
