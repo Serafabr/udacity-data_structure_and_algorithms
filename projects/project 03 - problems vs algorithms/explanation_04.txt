@@ -11,7 +11,7 @@ Efficiency:
 
     Space Efficiency: O(n)
         
-        - Explanation: It doesn't execute in place on the list. It creates a new list, in order to not mutate the initial input.
+        - Explanation: It doesn't execute it in place on the list. It creates a new list, in order to not mutate the initial input.
 
     Operation: sort_012(input_list)
     

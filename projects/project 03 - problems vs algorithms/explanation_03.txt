@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-Code Design:
-
-    Algorithm used: 
-        - Merge Sort
-        
-    Explanation: 
-        - First we merge sort the list. Then we get the smallest digits and start merging to produce the two numbers. For getting
-        the maximun sum, digits to the left should be the largest.
-
-
-Efficiency:
-
-    Space Efficiency: O(n)
-        
-        - In order to do the merge sort, we need to make a copy of the list.
-
-    Operation: rearrange_digits(input_list)
-    
-        Time Complexity - O(n * log n)
-        Explanation - To merge sort we need to loop through the list (with n items) logn times (that's how many times we could split
-        the list in two). So time complexity will be O(n * log n)
-||||||| merged common ancestors
-=======
 Code Design:
 
     Algorithm used: 
@@ -43,4 +19,3 @@ Efficiency:
         Time Complexity - O(n * log n)
         Explanation - To merge sort we need to loop through the list (with n items) log n times (that's how many times we could split
         the list in two). So time complexity will be O(n * log n)
->>>>>>> a73c4a0bbfe965c74a97c5be3e94b24649ca0b6a
