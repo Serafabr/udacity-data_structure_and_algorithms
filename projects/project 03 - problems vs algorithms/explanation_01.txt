@@ -1,0 +1,21 @@
+Code Design:
+
+    Algorithm used: 
+        - Binary Search (divide and conquer)
+        
+    Explanation: 
+        - Every iteration the algorithm check the number divided by 2 (n // 2) and multiplied by itself. If the result is equal to n, we've found
+        sqrt(n), otherwise keep searching on the right part.
+
+
+Efficiency:
+
+    Space Efficiency: O(1)
+        
+        Explanation: The size of the number don't alter the space used by the algorithm.
+
+    Operation: sqrt(n)
+    
+        Time Complexity - O(log n)
+        Explanation - On each iteration we divide the problem in the middle. So, we have a time complexity of O(log n)
+        

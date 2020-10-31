@@ -71,31 +71,43 @@ def test_function(test_case):
 # TEST CASES
 def test_01():
     # Normal cases
+    print("TEST 01 - Normal Cases")
     
     test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
+    print(rearrange_digits(test_case[0]))
     test_function(test_case)
     # Answer: 964, 852
-    test_case = [[1, 2, 3, 4, 5], [542, 31]]
+    test_case = [[1, 2, 3, 4, 5], [531, 42]]
+    print(rearrange_digits(test_case[0]))
     test_function(test_case)
-    # Answer: 542, 31
+    # Answer: 531, 42
     test_case = [[1, 4, 2, 6, 8, 9, 4, 2,], [9642, 8421]]
+    print(rearrange_digits(test_case[0]))
     test_function(test_case)
-    # Answer: 964, 852
+    # Answer: 8421, 9642
+    
+    print("-------------------------")
 
 def test_02():
     # Edge cases
     # Empty list and list with one element
+    print("TEST 02 - Edge Cases  - Empty list and list with one element")
     
     test_case = [[], [0, 0]]
+    print(rearrange_digits(test_case[0]))
     test_function(test_case)
     # Answer: 0, 0
     test_case = [[4], [0, 4]]
+    print(rearrange_digits(test_case[0]))
     test_function(test_case)
-    # Answer: 542, 31
+    # Answer: 4, 0
+    
+    print("-------------------------")
     
 def test_03():
     # Edge cases
     # Large list
+    print("TEST 03 - Edge Cases - Large lists")
     
     large_list = []
     for i in range(9, 0, -1):
@@ -103,9 +115,11 @@ def test_03():
             large_list.append(i)
     
     test_case = [large_list, [999999999999999999999999988888888888888888888888887777777777777777777777777666666666666666666666666655555555555555555555555554444444444444444444444444333333333333333333333333322222222222222222222222221111111111111111111111111, 999999999999999999999999988888888888888888888888887777777777777777777777777666666666666666666666666655555555555555555555555554444444444444444444444444333333333333333333333333322222222222222222222222221111111111111111111111111]]
+    print(rearrange_digits(test_case[0]))
     test_function(test_case)
     # Answer: 999999999999999999999999988888888888888888888888887777777777777777777777777666666666666666666666666655555555555555555555555554444444444444444444444444333333333333333333333333322222222222222222222222221111111111111111111111111, 999999999999999999999999988888888888888888888888887777777777777777777777777666666666666666666666666655555555555555555555555554444444444444444444444444333333333333333333333333322222222222222222222222221111111111111111111111111
 
+    print("-------------------------")
 
 if __name__ == '__main__':
     test_01()
