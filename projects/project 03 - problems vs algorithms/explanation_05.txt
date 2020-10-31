@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Code Design:
 
     Data Structures used: 
@@ -37,3 +38,44 @@ Efficiency:
         Time Complexity - O(n)
         Explanation - The algorithm will check all nodes that are children of the current node. It will need to traverse all the tree.
         So, time complexity is O(n).
+||||||| merged common ancestors
+=======
+Code Design:
+
+    Data Structures used: 
+        - Trie
+        - Stack
+        - Hash Table (dictionary on python)
+        
+    Explanation: 
+        - A Trie was used to facilitate finding all suffixes from some prefix. Each node of the tree represents a character of the
+        word. And if a character is child of other character, it means that it is the continuation of this word.
+        A stack of TrieNodes was used to keep track of what we have already seen when we trie to find all the suffixes (
+        in this case we need to traverse all the Trie).
+        Hash table was used to facilitate finding the child of each node (next character).
+
+
+Efficiency:
+
+    Space Efficiency: O(n) - n is the number of words
+        - Explanation: Each time we insert a new word, the trie will get bigger. When we repeat the characters on different words,
+        we don't need to create new nodes. For instance, 'Peter' and 'Parker' will use the same node for the letter 'P'.
+
+    Operation: Trie.insert(word)
+    
+        Time Complexity - O(1)
+        Explanation - We need to check each character on word to insert it on the trie, but it doesn't depent on the size of the trie.
+        And since the size of the word doesn't increase a lot, we can consider that this time complexity is O(1)
+    
+    Operation: Trie.find(word)
+
+        Time Complexity - O(1)
+        Explanation - It doesn't depent on the size of the Trie, it just depends on the size of the word. But, since the size of
+        the word doesn't increase a lot, we can consider that this time complexity is O(1)
+        
+    Operation: TrieNode.suffixes()
+
+        Time Complexity - O(n)
+        Explanation - Algorithm will check all nodes that are children of the current node. It will need to traverse all the tree.
+        So, time complexity is O(n).
+>>>>>>> a73c4a0bbfe965c74a97c5be3e94b24649ca0b6a
