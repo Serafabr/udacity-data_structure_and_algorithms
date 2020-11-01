@@ -18,12 +18,10 @@ Efficiency:
 
     Operation: Router.add_handler()
     
-        Time Complexity - O(m), where m is the number of relative paths (it can be roughly O(1))
-        Explanation - It needs to check each relative path on the url. Since the number of relative paths doesn't increase a lot,
-        we can consider that time complexity is roughly O(1)
+        Time Complexity - O(n * m) where n is the number of URL(s)/depth of RouteTrie and m is the average length of unique path stored in each Node
+        Explanation - It needs to check each relative path on the url. 
     
     Operation: Router.lookup()
 
-        Time Complexity - O(m), where m is the number of the relative paths (it can be roughly O(1))
-        Explanation - It needs to check each relative path on the url. Since the number of relative paths doesn't increase a lot,
-        we can consider that time complexity is roughly O(1)
+        Time Complexity - O(n), where n is the number of URL(s)/depth of RouteTrie
+        Explanation - It needs to check each relative path on the url. 
